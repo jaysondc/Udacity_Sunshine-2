@@ -134,7 +134,8 @@ public class SettingsActivity extends PreferenceActivity
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
         if ( key.equals(getString(R.string.pref_location_key)) ) {
-            // Reset location status because we have a new location
+            // we've changed the location
+            // first clear locationStatus
             Utility.resetLocationStatus(this);
             SunshineSyncAdapter.syncImmediately(this);
 
