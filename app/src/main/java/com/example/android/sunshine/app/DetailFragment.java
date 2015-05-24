@@ -208,8 +208,8 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             String dateText = Utility.getFormattedMonthDay(getActivity(), date);
             mDateView.setText(friendlyDateText + ", " + dateText);
 
-            // Read description from cursor and update view
-            String description = data.getString(COL_WEATHER_DESC);
+            // Get description from weather condition ID
+            String description = Utility.getStringForWeatherCondition(getActivity(), weatherId);
             mDescriptionView.setText(description);
 
             // For accessibility, add a content description to the icon field
