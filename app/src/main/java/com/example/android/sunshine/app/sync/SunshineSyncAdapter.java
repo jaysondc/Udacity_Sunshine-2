@@ -361,7 +361,6 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
                 notifyWeather();
             }
-
             Log.d(LOG_TAG, "Sync Complete. " + cVVector.size() + " Inserted");
             setLocationStatus(getContext(), LOCATION_STATUS_OK);
 
@@ -617,9 +616,9 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     /**
-     * Sets the location status into a shared preference. This function should not be called from
-     * the UI thread because it uses commit to write to shared preferences.
-     * @param c Context to get PreferenceManager from.
+     * Sets the location status into shared preference.  This function should not be called from
+     * the UI thread because it uses commit to write to the shared preferences.
+     * @param c Context to get the PreferenceManager from.
      * @param locationStatus The IntDef value to set
      */
     static private void setLocationStatus(Context c, @LocationStatus int locationStatus){
@@ -628,5 +627,4 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
         spe.putInt(c.getString(R.string.pref_location_status_key), locationStatus);
         spe.commit();
     }
-
 }
