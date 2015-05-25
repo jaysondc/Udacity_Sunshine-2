@@ -16,7 +16,7 @@
  -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_activated="true"
-        android:drawable="@color/activated"/>
+        android:drawable="@color/primary_light" />
 
     <!-- Default, "just hangin' out" state. The base state also
          implements the ripple effect. -->
