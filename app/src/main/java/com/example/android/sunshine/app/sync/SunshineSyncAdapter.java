@@ -2,6 +2,7 @@ package com.example.android.sunshine.app.sync;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.AbstractThreadedSyncAdapter;
@@ -29,7 +30,6 @@ import android.text.format.Time;
 import android.util.Log;
 
 import com.bumptech.glide.Glide;
-import com.example.android.sunshine.app.BuildConfig;
 import com.example.android.sunshine.app.MainActivity;
 import com.example.android.sunshine.app.R;
 import com.example.android.sunshine.app.Utility;
@@ -401,27 +401,31 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
                     Resources resources = context.getResources();
                     int artResourceId = Utility.getArtResourceForWeatherCondition(weatherId);
                     String artUrl = Utility.getArtUrlForWeatherCondition(context, weatherId);
-                    Bitmap largeIcon;
 
-                    // Get fixed width and height for notification icons
+                    // On Honeycomb and higher devices, we can retrieve the size of the large icon
+                    // Prior to that, we use a fixed size
+                    @SuppressLint("InlinedApi")
                     int largeIconWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
                             ? resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_width)
                             : resources.getDimensionPixelSize(R.dimen.notification_large_icon_default);
+                    @SuppressLint("InlinedApi")
                     int largeIconHeight = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
                             ? resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_height)
                             : resources.getDimensionPixelSize(R.dimen.notification_large_icon_default);
-                    try{
+
+                    // Retrieve the large icon
+                    Bitmap largeIcon;
+                    try {
                         largeIcon = Glide.with(context)
                                 .load(artUrl)
                                 .asBitmap()
                                 .error(artResourceId)
-                                .into(largeIconWidth, largeIconHeight)
-                                .get();
-                    } catch (InterruptedException | ExecutionException e){
+                                .fitCenter()
+                                .into(largeIconWidth, largeIconHeight).get();
+                    } catch (InterruptedException | ExecutionException e) {
                         Log.e(LOG_TAG, "Error retrieving large icon from " + artUrl, e);
                         largeIcon = BitmapFactory.decodeResource(resources, artResourceId);
                     }
-
                     String title = context.getString(R.string.app_name);
 
                     // Define the text of the forecast.
