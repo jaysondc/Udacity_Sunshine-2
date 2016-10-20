@@ -18,10 +18,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.sunshine.app.ForecastFragment">
-    <ListView
-        style="@style/ForecastListStyle"
-        android:id="@+id/listview_forecast"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null" />
+        android:layout_height="wrap_content">
+        <ListView
+            style="@style/ForecastListStyle"
+            android:id="@+id/listview_forecast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null" />
+
+        <TextView
+            android:id="@+id/listview_empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/listview_empty_message"/>
+
+    </FrameLayout>
 </FrameLayout>
