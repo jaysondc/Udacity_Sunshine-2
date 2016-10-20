@@ -41,3 +41,6 @@ project.properties
 ##Gradle-based build
 .gradle
 build/
+
+## contains OpenWeatherMap API key
+gradle.properties
