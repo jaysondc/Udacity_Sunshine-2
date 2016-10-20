@@ -110,6 +110,7 @@
     <string name="pref_last_notification">last_notification</string>
 
     <!-- Empty forecast message -->
-    <string name="listview_empty_message">No Weather Information Available.</string>
+    <string name="listview_empty_message">No weather information available.</string>
+    <string name="listview_disconnected_message">The network is not available to fetch weather data.</string>
 
 </resources>

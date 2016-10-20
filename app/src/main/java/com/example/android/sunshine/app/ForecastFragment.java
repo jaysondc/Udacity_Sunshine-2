@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.android.sunshine.app.data.WeatherContract;
 
@@ -248,6 +249,15 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if(data.getCount() == 0){
+            // If cursor is empty, check the network state
+            if(!Utility.isNetworkConnected(getActivity())){
+                // If we're not connected, display disconnected emptyview.
+                TextView emptyView = (TextView) mListView.getEmptyView();
+                emptyView.append(" " + getString(R.string.listview_disconnected_message));
+            }
+        }
+
         mForecastAdapter.swapCursor(data);
         if (mPosition != ListView.INVALID_POSITION) {
             // If we don't need to restart the loader, and there's a desired position to restore
