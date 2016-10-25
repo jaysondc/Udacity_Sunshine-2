@@ -60,13 +60,14 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
     // NETWORK STATUS STATES
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({LOCATION_STATUS_OK, LOCATION_STATUS_SERVER_DOWN, LOCATION_STATUS_SERVER_INVALID,
-        LOCATION_STATUS_UNKNOWN})
+        LOCATION_STATUS_UNKNOWN, LOCATION_STATUS_INVALID})
     public @interface LocationStatus{}
 
     public static final int LOCATION_STATUS_OK = 0;
     public static final int LOCATION_STATUS_SERVER_DOWN = 1;
     public static final int LOCATION_STATUS_SERVER_INVALID = 2;
     public static final int LOCATION_STATUS_UNKNOWN = 3;
+    public static final int LOCATION_STATUS_INVALID = 4;
 
 
     private static final String[] NOTIFY_WEATHER_PROJECTION = new String[] {
@@ -221,8 +222,28 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
         final String OWM_DESCRIPTION = "main";
         final String OWM_WEATHER_ID = "id";
 
+        // Misc
+        final String OWM_MESSAGE_CODE = "cod";
+
         try {
             JSONObject forecastJson = new JSONObject(forecastJsonStr);
+
+            // Check for message code. If 404 is returned, set location status to invalid
+            if(forecastJson.has(OWM_MESSAGE_CODE)){
+                int errorCode = forecastJson.getInt(OWM_MESSAGE_CODE);
+
+                switch(errorCode){
+                    case HttpURLConnection.HTTP_OK:
+                        break;
+                    case HttpURLConnection.HTTP_NOT_FOUND:
+                        setLocationStatus(getContext(), LOCATION_STATUS_INVALID);
+                        return;
+                    default:
+                        setLocationStatus(getContext(), LOCATION_STATUS_SERVER_DOWN);
+                        return;
+                }
+            }
+
             JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
 
             JSONObject cityJson = forecastJson.getJSONObject(OWM_CITY);
@@ -568,4 +589,5 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
         spe.putInt(c.getString(R.string.pref_location_status_key), locationStatus);
         spe.commit();
     }
+
 }

@@ -28,6 +28,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.example.android.sunshine.app.sync.SunshineSyncAdapter.LOCATION_STATUS_UNKNOWN;
+
 public class Utility {
     public static String getPreferredLocation(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -48,7 +50,15 @@ public class Utility {
     int getLocationStatus(Context context){
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getInt(context.getString(R.string.pref_location_status_key),
-                SunshineSyncAdapter.LOCATION_STATUS_UNKNOWN);
+                LOCATION_STATUS_UNKNOWN);
+    }
+
+    // Reset location status to "Unknown"
+    public static void resetLocationStatus(Context context){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor spe = sp.edit();
+        spe.putInt(context.getString(R.string.pref_location_status_key), LOCATION_STATUS_UNKNOWN);
+        spe.apply();
     }
 
 
