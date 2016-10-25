@@ -132,7 +132,12 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
             urlConnection.connect();
 
             // Read the input stream into a String
-            InputStream inputStream = urlConnection.getInputStream();
+            InputStream inputStream;
+            try{
+                inputStream = urlConnection.getInputStream();
+            } catch(IOException e){
+                inputStream = urlConnection.getErrorStream();
+            }
             StringBuffer buffer = new StringBuffer();
             if (inputStream == null) {
                 // Nothing to do.
@@ -235,7 +240,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
                 switch(errorCode){
                     case HttpURLConnection.HTTP_OK:
                         break;
-                    case HttpURLConnection.HTTP_NOT_FOUND:
+                    case 502: // Error code for not found city
                         setLocationStatus(getContext(), LOCATION_STATUS_INVALID);
                         return;
                     default:
