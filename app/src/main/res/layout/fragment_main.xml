@@ -32,7 +32,9 @@
         <TextView
             android:id="@+id/listview_empty_view"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:layout_width="wrap_content"
