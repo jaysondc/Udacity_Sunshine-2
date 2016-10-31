@@ -46,6 +46,7 @@
     <!-- Key name for storing location in SharedPreferences [CHAR LIMIT=NONE] -->
     <string name="pref_location_key" translatable="false">location</string>
 
+
     <!-- Default postal code for location preference [CHAR LIMIT=NONE] -->
     <string name="pref_location_default" translatable="false">94043</string>
 
@@ -81,6 +82,14 @@
     <string name="pref_units_imperial" translatable="false">imperial</string>
 
 
+    <!-- ICON PACK PREFERENCES -->
+    <string name="pref_icons_label" translatable="true">Icon Pack</string>
+    <string name="pref_icons_key" translatable="false">icons</string>
+    <string name="pref_icons_sunshine" translatable="false">Sunshine</string>
+    <string name="pref_icons_colored" translatable="false">Colored</string>
+    <string name="pref_icons_mono" translatable="false">Mono</string>
+
+
     <!-- Language-specific constants -->
     <string name="today">Today</string>
 
@@ -110,8 +119,13 @@
     <string name="sync_account_type">sunshine.example.com</string>
     <string name="content_authority">com.example.android.sunshine.app</string>
 
+    <!-- ICON PACK URLS -->
     <!-- Format for retrieving art from an external source [CHAR LIMIT=NONE] -->
-    <string name="format_art_url" translatable="false">https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-xxhdpi/art_<xliff:g id="description">%s</xliff:g>.png</string>
+    <string name="format_art_url_sunshine" translatable="false">https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-xxhdpi/art_<xliff:g id="description">%s</xliff:g>.png</string>
+    <!-- Colored -->
+    <string name="format_art_url_colored" translatable="false">https://raw.githubusercontent.com/udacity/sunshine_icons/master/Archive/Colored/art_<xliff:g id="description">%s</xliff:g>.png</string>
+    <!-- Mono -->
+    <string name="format_art_url_mono" translatable="false">https://raw.githubusercontent.com/udacity/sunshine_icons/master/Archive/Mono/art_<xliff:g id="description">%s</xliff:g>.png</string>
 
     <!-- Notification Format -->
     <string name="format_notification">Forecast: <xliff:g id="condition">%1$s</xliff:g> High: <xliff:g id="high">%2$s</xliff:g> Low: <xliff:g id="low">%3$s</xliff:g></string>
