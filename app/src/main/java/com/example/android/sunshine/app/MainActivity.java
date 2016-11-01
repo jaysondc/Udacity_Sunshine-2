@@ -46,9 +46,11 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
         // Check for availability of Google Play Services
         playServicesAvailable = checkPlayServices();
 
+        String registrationId = FirebaseInstanceId.getInstance().getToken();
+
         if(playServicesAvailable){
-            if(null != FirebaseInstanceId.getInstance().getToken()){
-                Log.d(LOG_TAG, "We are registered!");
+            if(null != registrationId){
+                Log.d(LOG_TAG, "We are registered! ID = " + registrationId);
             }
         }
 
