@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/primary">
+        style="@style/Toolbar">
 
         <ImageView
             android:layout_width="wrap_content"
