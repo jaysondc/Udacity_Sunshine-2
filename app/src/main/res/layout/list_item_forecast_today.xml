@@ -19,9 +19,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/touch_selector_white"
     app:columnCount="2"
-    android:elevation="@dimen/appbar_elevation">
+    android:elevation="@dimen/appbar_elevation"
+    >
 
     <TextView
         android:id="@+id/list_item_date_textview"

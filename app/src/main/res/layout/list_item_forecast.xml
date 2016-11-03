@@ -18,23 +18,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingLeft="16dp"
+    android:paddingEnd="16dp"
+    android:paddingRight="16dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:orientation="horizontal"
     android:background="@drawable/touch_selector">
-
-    <FrameLayout
-        android:layout_width="60dp"
-        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/list_item_icon"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxWidth="40dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            tools:src="@drawable/ic_clear"
             android:adjustViewBounds="true"/>
-
-    </FrameLayout>
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -47,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
+            tools:text="Tomorrow"
             android:textSize="20sp"/>
 
         <TextView
@@ -54,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
+            tools:text="Clear"
             android:textAppearance="?android:textAppearanceSmall"/>
     </LinearLayout>
 
@@ -62,22 +67,30 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/list_item_high_textview"
-            android:layout_width="wrap_content"
+            android:layout_width="49dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif-condensed"
-            android:textAppearance="?android:textAppearanceLarge"/>
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="right"
+            android:fontFamily="sans-serif"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textSize="32dp"
+            tools:text="20"/>
 
         <TextView
             android:id="@+id/list_item_low_textview"
-            android:layout_width="wrap_content"
+            android:layout_width="49dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif-condensed"
-            android:textAppearance="?android:textAppearanceSmall"/>
+            android:gravity="right"
+            android:fontFamily="sans-serif"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textSize="32dp"
+            tools:text="6"/>
     </LinearLayout>
 </LinearLayout>
