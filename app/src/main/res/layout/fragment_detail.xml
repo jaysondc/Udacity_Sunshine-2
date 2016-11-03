@@ -49,14 +49,13 @@
                 app:layout_columnWeight="1.5" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:id="@+id/detail_humidity_textview"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@android:color/white"
                 tools:text="38%"
-                app:layout_rowWeight="1"
-                app:layout_columnWeight="1"/>
+                app:layout_rowWeight="1" />
 
             <TextView
                 android:layout_width="0dp"
@@ -71,14 +70,13 @@
 
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:id="@+id/detail_pressure_textview"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@android:color/white"
                 tools:text="995 hPa"
-                app:layout_rowWeight="1"
-                app:layout_columnWeight="1"/>
+                app:layout_rowWeight="1" />
 
             <TextView
                 android:layout_width="0dp"
@@ -93,14 +91,13 @@
 
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:id="@+id/detail_wind_textview"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@android:color/white"
                 tools:text="4km/h NW"
-                app:layout_rowWeight="1"
-                app:layout_columnWeight="1"/>
+                app:layout_rowWeight="1" />
 
     </android.support.v7.widget.GridLayout>
 
