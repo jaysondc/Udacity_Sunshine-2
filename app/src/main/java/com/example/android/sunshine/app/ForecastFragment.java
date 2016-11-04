@@ -144,7 +144,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // Get a reference to the ListView, and attach this adapter to it.
         mListView = (ListView) rootView.findViewById(R.id.listview_forecast);
         // Set emptyview for an empty database
-        mListView.setEmptyView(rootView.findViewById(R.id.listview_empty_view));
+        mListView.setEmptyView(rootView.findViewById(R.id.listview_forecast_empty));
         mListView.setAdapter(mForecastAdapter);
         // We'll call our MainActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
